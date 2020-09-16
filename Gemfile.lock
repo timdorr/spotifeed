@@ -6,6 +6,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday_middleware (1.0.0)
       faraday (~> 1.0)
+    multi_json (1.15.0)
     multipart-post (2.1.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
@@ -15,11 +16,20 @@ GEM
     rack (2.2.3)
     rack-protection (2.1.0)
       rack
+    rexml (3.2.4)
+    rss (0.2.9)
+      rexml
     ruby2_keywords (0.0.2)
     sinatra (2.1.0)
       mustermann (~> 1.0)
       rack (~> 2.2)
       rack-protection (= 2.1.0)
+      tilt (~> 2.0)
+    sinatra-contrib (2.1.0)
+      multi_json
+      mustermann (~> 1.0)
+      rack-protection (= 2.1.0)
+      sinatra (= 2.1.0)
       tilt (~> 2.0)
     tilt (2.0.10)
 
@@ -31,7 +41,9 @@ DEPENDENCIES
   faraday
   faraday_middleware
   puma
+  rss
   sinatra
+  sinatra-contrib
 
 BUNDLED WITH
    2.1.4
