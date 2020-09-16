@@ -1,5 +1,20 @@
 require './spotify'
 
+  class Redis
+    def cache(key, expire = nil, recalculate = false)
+      if (value = get(key)).nil? || recalculate
+        value = yield(self)
+        set(key, value)
+        expire(key, expire) if expire
+        value
+      else
+        value
+      end
+    end
+  end
+
+$redis = Redis.new
+
 class Spotifeed < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
@@ -13,11 +28,16 @@ class Spotifeed < Sinatra::Base
   end
 
   get '/?:show_id?' do
-    content_type 'application/rss+xml; charset=utf-8'
-    show = spotify.conn.get("shows/#{params[:show_id] || ENV['SHOW_ID']}?market=US").body
+    show_id = params[:show_id] || ENV['SHOW_ID']
+
+    show = $redis.cache("show:#{show_id}", (Time.now + 3600).to_i) do
+      JSON.generate spotify.conn.get("shows/#{show_id}?market=US").body
+    end
+    show = JSON.parse(show)
 
     return 'Not a valid show' if show['error']
 
+    content_type 'application/rss+xml; charset=utf-8'
     RSS::Maker.make('rss2.0') do |rss|
       rss.channel.title = show['name']
       rss.channel.description = show['description']

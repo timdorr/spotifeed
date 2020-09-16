@@ -11,6 +11,8 @@ gem 'faraday_middleware'
 
 gem 'rss'
 
+gem 'redis'
+
 group :development do
   gem 'dotenv'
 end

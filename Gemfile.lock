@@ -16,6 +16,7 @@ GEM
     rack (2.2.3)
     rack-protection (2.1.0)
       rack
+    redis (4.2.2)
     rexml (3.2.4)
     rss (0.2.9)
       rexml
@@ -41,9 +42,13 @@ DEPENDENCIES
   faraday
   faraday_middleware
   puma
+  redis
   rss
   sinatra
   sinatra-contrib
+
+RUBY VERSION
+   ruby 2.7.1p83
 
 BUNDLED WITH
    2.1.4
