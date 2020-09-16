@@ -1,1 +1,1 @@
-web: ruby spotifeed.rb
+web: puma -p $PORT
