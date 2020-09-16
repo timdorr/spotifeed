@@ -39,8 +39,11 @@ class Spotifeed < Sinatra::Base
           item.guid.content = episode['uri']
           item.title = episode['name']
           item.description = episode['description']
-          item.itunes_explicit = episode['explicit']
           item.date = Time.parse(episode['release_date'] || '01-01-2020').to_s
+
+          item.itunes_image = episode.dig('images', 0, 'url')
+          item.itunes_explicit = episode['explicit']
+
           item.link = "https://anon-podcast.scdn.co/#{episode['audio_preview_url'].split('/').last}"
           item.enclosure.url = "https://anon-podcast.scdn.co/#{episode['audio_preview_url'].split('/').last}"
           item.enclosure.length = 1234567
