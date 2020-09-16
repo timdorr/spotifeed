@@ -16,6 +16,8 @@ class Spotifeed < Sinatra::Base
     content_type 'application/rss+xml; charset=utf-8'
     show = spotify.conn.get("shows/#{params[:show_id] || ENV['SHOW_ID']}?market=US").body
 
+    return 'Not a valid show' if show['error']
+
     RSS::Maker.make('rss2.0') do |rss|
       rss.channel.title = show['name']
       rss.channel.description = show['description']
