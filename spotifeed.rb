@@ -12,9 +12,9 @@ class Spotifeed < Sinatra::Base
     @spotify = Spotify.new
   end
 
-  get '/' do
+  get '/?:show_id?' do
     content_type 'application/rss+xml; charset=utf-8'
-    show = spotify.conn.get("shows/#{ENV['SHOW_ID']}?market=US").body
+    show = spotify.conn.get("shows/#{params[:show_id] || ENV['SHOW_ID']}?market=US").body
 
     RSS::Maker.make('rss2.0') do |rss|
       rss.channel.title = show['name']
