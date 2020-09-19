@@ -14,7 +14,7 @@ class Spotify
   def refresh
     return unless @token_expiry <= Time.now
 
-    puts "refreshing!"
+    puts "Refreshing token!"
 
     res = @conn.post(
       'https://accounts.spotify.com/api/token',

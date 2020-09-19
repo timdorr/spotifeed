@@ -1,17 +1,17 @@
 require './spotify'
 
-  class Redis
-    def cache(key, expire = nil, recalculate = false)
-      if (value = get(key)).nil? || recalculate
-        value = yield(self)
-        set(key, value)
-        expire(key, expire) if expire
-        value
-      else
-        value
-      end
+class Redis
+  def cache(key, expire = nil)
+    if (value = get(key)).nil?
+      value = yield(self)
+      set(key, value)
+      expire(key, expire) if expire
+      value
+    else
+      value
     end
   end
+end
 
 $redis = Redis.new
 
@@ -29,8 +29,9 @@ class Spotifeed < Sinatra::Base
 
   get '/?:show_id?' do
     show_id = params[:show_id] || ENV['SHOW_ID']
+    return '' unless show_id =~ /\A\w{22}\z/
 
-    show = $redis.cache("show:#{show_id}", (Time.now + 3600).to_i) do
+    show = $redis.cache("show:#{show_id}", 3600) do
       JSON.generate spotify.conn.get("shows/#{show_id}?market=US").body
     end
     show = JSON.parse(show)
