@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Spotifeed</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: black;
+        color: white;
+        font-family: 'Kumbh Sans', sans-serif;
+        line-height: 1.45;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5rem;
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      header > img {
+        display: block;
+        margin: 0.5rem auto;
+        height: 4rem;
+      }
+
+      main {
+        max-width: 30rem;
+        margin: 0 auto;
+        padding: 0 0.5rem;
+        margin-top: 10rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      span {
+        font-family: monospace;
+      }
+
+      p > a {
+        color: white;
+      }
+
+      label {
+        display: block;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      #spotify_url {
+        width: 100%;
+        padding: 0.75rem 0.5rem;
+        font-family: 'Kumbh Sans', sans-serif;
+        font-size: 1.1rem;
+        border: none;
+        outline: none;
+      }
+
+      #spotifeed_url {
+        display: block;
+        width: 100%;
+        margin: 0.5rem 0;
+        padding: 0.5rem;
+        background: white;
+        color: black;
+        font-size: 1.1rem;
+        text-decoration: none;
+      }
+
+      footer {
+        position: fixed;
+        bottom: 0.5rem;
+        left: 1rem;
+        color: #666;
+        font-size: 0.8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="/spotifeed.svg" />
+    </header>
+
+    <main>
+      <h1>
+        Spotifeed is a simple service to convert Spotify podcasts to RSS feeds.
+      </h1>
+
+      <p>
+        You can use these RSS feeds in any podcast app. Just take the show ID
+        from the end of the Show Link on Spotify and put it at the end of
+        <span>https://spotifeed.timdorr.com/</span>
+      </p>
+
+      <p>
+        <a href="https://github.com/timdorr/spotifeed"
+          >The source code to this site is available on GitHub</a
+        >
+      </p>
+
+      <label for="spotify_url">Spotify URL</label>
+      <input
+        id="spotify_url"
+        value="https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk"
+      />
+
+      <label>RSS Feed</label>
+      <a
+        href="https://spotifeed.timdorr.com/4rOoJ6Egrf8K2IrywzwOMk"
+        id="spotifeed_url"
+        >https://spotifeed.timdorr.com/4rOoJ6Egrf8K2IrywzwOMk</a
+      >
+    </main>
+
+    <footer>
+      Spotify® is a trademark of Spotify AB which does not sponsor, authorize,
+      or endorse this site.
+    </footer>
+  </body>
+
+  <script>
+    const spotifyURL = document.getElementById('spotify_url')
+    const spotifeedURL = document.getElementById('spotifeed_url')
+
+    const urlChanged = (event) => {
+      let showID = event.target.value.match(
+        /https\:\/\/open\.spotify\.com\/show\/(\w*)/i
+      )
+      if (!showID) return
+
+      showID = showID.pop()
+
+      spotifeedURL.href = `https://spotifeed.timdorr.com/${showID}`
+      spotifeedURL.textContent = `https://spotifeed.timdorr.com/${showID}`
+    }
+
+    spotifyURL.addEventListener('change', urlChanged)
+    spotifyURL.addEventListener('keyup', urlChanged)
+  </script>
+</html>

@@ -27,7 +27,11 @@ class Spotifeed < Sinatra::Base
     @spotify = Spotify.new
   end
 
-  get '/?:show_id?' do
+  get '/' do
+    File.read(File.join('public', 'index.html'))
+  end
+
+  get '/:show_id' do
     show_id = params[:show_id] || ENV['SHOW_ID']
     return '' unless show_id =~ /\A\w{22}\z/
 
