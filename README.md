@@ -20,3 +20,6 @@ Just take the show ID from the end of the Show Link on Spotify and put it at the
 ```
 https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk -> https://spotifeed.timdorr.com/4rOoJ6Egrf8K2IrywzwOMk
 ```
+
+
+###### _Spotify® is a trademark of Spotify AB which does not sponsor, authorize, or endorse this project._
