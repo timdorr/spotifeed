@@ -2,7 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
 
     <title>Spotifeed</title>
 
@@ -12,10 +15,15 @@
     />
 
     <style>
+      * {
+        box-sizing: border-box;
+      }
+
       html,
       body {
         margin: 0;
         padding: 0;
+        overflow-x: hidden;
         background: black;
         color: white;
         font-family: 'Kumbh Sans', sans-serif;
@@ -23,25 +31,28 @@
       }
 
       header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
+        display: grid;
+        justify-content: center;
+        align-content: center;
         height: 5rem;
+        width: 100%;
         background: rgba(255, 255, 255, 0.2);
       }
 
       header > img {
         display: block;
-        margin: 0.5rem auto;
         height: 4rem;
       }
 
       main {
-        max-width: 30rem;
-        margin: 0 auto;
-        padding: 0 0.5rem;
-        margin-top: 10rem;
+        display: grid;
+        grid-template-columns: 1fr min(50ch, 100%) 1fr;
+        margin: 4rem 0;
+        padding: 0 1rem;
+      }
+
+      main > * {
+        grid-column: 2;
       }
 
       h1 {
@@ -72,7 +83,6 @@
       }
 
       #spotifeed_url {
-        display: block;
         width: 100%;
         margin: 0.5rem 0;
         padding: 0.5rem;
@@ -83,9 +93,7 @@
       }
 
       footer {
-        position: fixed;
-        bottom: 0.5rem;
-        left: 1rem;
+        margin-top: 4rem;
         color: #666;
         font-size: 0.8rem;
       }
@@ -125,12 +133,12 @@
         id="spotifeed_url"
         >https://spotifeed.timdorr.com/4rOoJ6Egrf8K2IrywzwOMk</a
       >
-    </main>
 
-    <footer>
-      Spotify® is a trademark of Spotify AB which does not sponsor, authorize,
-      or endorse this site.
-    </footer>
+      <footer>
+        Spotify® is a trademark of Spotify AB which does not sponsor, authorize,
+        or endorse this site.
+      </footer>
+    </main>
   </body>
 
   <script>
