@@ -71,7 +71,7 @@ class Spotifeed < Sinatra::Base
 
           item.link = "https://anon-podcast.scdn.co/#{episode['audio_preview_url'].split('/').last}"
           item.enclosure.url = "https://anon-podcast.scdn.co/#{episode['audio_preview_url'].split('/').last}"
-          item.enclosure.length = 1234567
+          item.enclosure.length = (episode['duration_ms'] / 1000).floor()
           item.enclosure.type = 'audio/mpeg'
         end
       end
