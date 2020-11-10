@@ -69,7 +69,7 @@ class Spotifeed < Sinatra::Base
           item.itunes_image = episode.dig('images', 0, 'url')
           item.itunes_explicit = episode['explicit']
 
-          item.link = "https://anon-podcast.scdn.co/#{episode['audio_preview_url'].split('/').last}"
+          item.link = episode.dig('external_urls', 'spotify')
           item.enclosure.url = "https://anon-podcast.scdn.co/#{episode['audio_preview_url'].split('/').last}"
           item.enclosure.length = (episode['duration_ms'] / 1000).floor()
           item.enclosure.type = 'audio/mpeg'
