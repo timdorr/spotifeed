@@ -16,6 +16,7 @@ GEM
     rack (2.2.3)
     rack-protection (2.1.0)
       rack
+    rake (13.0.1)
     redis (4.2.2)
     rexml (3.2.4)
     rss (0.2.9)
@@ -42,6 +43,7 @@ DEPENDENCIES
   faraday
   faraday_middleware
   puma
+  rake
   redis
   rss
   sinatra
