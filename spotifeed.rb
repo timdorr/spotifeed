@@ -69,6 +69,7 @@ class Spotifeed < Sinatra::Base
           item.description = episode['description']
           item.date = Time.parse(episode['release_date'] || '01-01-2020').to_s
 
+          item.itunes_subtitle = episode['description']
           item.itunes_image = episode.dig('images', 0, 'url')
           item.itunes_duration = "%02d:%02d:%02d" % [duration_secs / 3600, duration_secs / 60 % 60, duration_secs % 60]
           item.itunes_explicit = episode['explicit']
