@@ -76,7 +76,7 @@ class Spotifeed < Sinatra::Base
 
           item.link = episode.dig('external_urls', 'spotify')
           item.enclosure.url = "https://anon-podcast.scdn.co/#{episode['audio_preview_url'].split('/').last}"
-          item.enclosure.length = duration_secs
+          item.enclosure.length = 0
           item.enclosure.type = 'audio/mpeg'
         end
       end
