@@ -40,6 +40,21 @@ class Spotifeed < Sinatra::Base
     end
     show = JSON.parse(show)
 
+    # if demanded, request even more episodes (use env variable MAX_EPISODE_AMOUNT)
+    iterator = 50
+    while iterator < ENV['MAX_EPISODE_AMOUNT'].to_i do
+      episodes = $redis.cache("show:#{show_id}-#{iterator}", 3600) do
+        JSON.generate spotify.conn.get("shows/#{show_id}/episodes?market=US&limit=50&offset=#{iterator}").body
+      end
+      # do not continue requesting if there aren't more shows
+      if JSON.parse(episodes).dig('items').length() == 0
+        break
+      end
+      # add additional episodes to show
+      show.dig('episodes', 'items').push(*JSON.parse(episodes).dig('items'))
+      iterator = iterator + 50
+    end
+
     return 'Not a valid show' if show['error']
 
     content_type 'application/rss+xml; charset=utf-8'
