@@ -42,6 +42,21 @@ class Spotifeed < Sinatra::Base
 
     return 'Not a valid show' if show['error']
 
+    max_episodes = ENV.fetch('MAX_EPISODE_COUNT', 0).to_i
+    limit = 50
+    max_episodes.times.each_slice(limit).map(&:first).each do |offset|
+      next if offset.zero?
+
+      episodes = $redis.cache("show:#{show_id}-#{offset}") do
+        JSON.generate spotify.conn.get("shows/#{show_id}/episodes?market=US&limit=#{limit}&offset=#{offset}").body
+      end
+      episodes = JSON.parse(episodes)
+
+      show.dig('episodes', 'items').concat(episodes.dig('items'))
+
+      break if episodes.dig('items').count < 50
+    end
+
     content_type 'application/rss+xml; charset=utf-8'
     RSS::Maker::RSS20.make do |rss|
       rss.channel.title = show['name']
