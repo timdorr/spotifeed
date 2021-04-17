@@ -112,7 +112,7 @@
       <p>
         You can use these RSS feeds in any podcast app. Just take the show ID
         from the end of the Show Link on Spotify and put it at the end of
-        <span>https://spotifeed.timdorr.com/</span>
+        <span>${BASE_URL}</span>
       </p>
 
       <p>
@@ -124,14 +124,14 @@
       <label for="spotify_url">Spotify URL</label>
       <input
         id="spotify_url"
-        value="https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk"
+        value="https://open.spotify.com/show/${SHOW_ID}"
       />
 
       <label>RSS Feed</label>
       <a
-        href="https://spotifeed.timdorr.com/4rOoJ6Egrf8K2IrywzwOMk"
+        href="${BASE_URL}/${SHOW_ID}"
         id="spotifeed_url"
-        >https://spotifeed.timdorr.com/4rOoJ6Egrf8K2IrywzwOMk</a
+        >${BASE_URL}/${SHOW_ID}</a
       >
 
       <footer>
@@ -153,8 +153,8 @@
 
       showID = showID.pop()
 
-      spotifeedURL.href = `https://spotifeed.timdorr.com/${showID}`
-      spotifeedURL.textContent = `https://spotifeed.timdorr.com/${showID}`
+      spotifeedURL.href = `${BASE_URL}/${showID}`
+      spotifeedURL.textContent = `${BASE_URL}/${showID}`
     }
 
     spotifyURL.addEventListener('change', urlChanged)

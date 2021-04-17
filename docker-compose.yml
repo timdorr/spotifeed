@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  redis:
+    image: redis
+  spotifeed:
+    image: spotifeed
+    depends_on: 
+      - redis
+    build: .
+    env_file:
+      - .env
+    ports:
+      - 9292:9292

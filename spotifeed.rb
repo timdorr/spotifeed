@@ -13,7 +13,7 @@ class Redis
   end
 end
 
-$redis = Redis.new
+$redis = Redis.new(url: ENV['REDIS_URI'])
 
 class Spotifeed < Sinatra::Base
   configure :development do
@@ -56,7 +56,7 @@ class Spotifeed < Sinatra::Base
 
       break if episodes.dig('items').count < 50
     end
-
+    
     content_type 'application/rss+xml; charset=utf-8'
     RSS::Maker::RSS20.make do |rss|
       rss.channel.title = show['name']

@@ -21,7 +21,7 @@ class Spotify
       'grant_type=client_credentials',
       'Authorization' => "Basic #{Base64.strict_encode64("#{ENV['SPOTIFY_CLIENT_ID']}:#{ENV['SPOTIFY_CLIENT_SECRET']}")}"
     )
-
+   
     @token_expiry = Time.now + res.body["expires_in"]
     @conn.headers['Authorization'] = "Bearer #{res.body["access_token"]}"
   end
