@@ -1,20 +1,21 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-ruby '2.7.2'
+ruby "~> 3.0.0"
 
-gem 'rake'
+gem "rake"
 
-gem 'puma'
-gem 'sinatra'
-gem 'sinatra-contrib'
+gem "puma"
+gem "sinatra"
+gem "sinatra-contrib"
 
-gem 'faraday'
-gem 'faraday_middleware'
+gem "faraday"
+gem "faraday_middleware"
 
-gem 'rss'
+gem "rss"
 
-gem 'redis'
+gem "redis"
 
 group :development do
-  gem 'dotenv'
+  gem "dotenv"
+  gem "standard"
 end

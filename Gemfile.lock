@@ -1,27 +1,55 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    ast (2.4.2)
     dotenv (2.7.6)
-    faraday (1.0.1)
+    faraday (1.4.1)
+      faraday-excon (~> 1.1)
+      faraday-net_http (~> 1.0)
+      faraday-net_http_persistent (~> 1.1)
       multipart-post (>= 1.2, < 3)
+      ruby2_keywords (>= 0.0.4)
+    faraday-excon (1.1.0)
+    faraday-net_http (1.0.1)
+    faraday-net_http_persistent (1.1.0)
     faraday_middleware (1.0.0)
       faraday (~> 1.0)
     multi_json (1.15.0)
     multipart-post (2.1.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
-    nio4r (2.5.3)
-    puma (4.3.6)
+    nio4r (2.5.7)
+    parallel (1.20.1)
+    parser (3.0.1.0)
+      ast (~> 2.4.1)
+    puma (5.2.2)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-protection (2.1.0)
       rack
-    rake (13.0.1)
-    redis (4.2.2)
-    rexml (3.2.4)
+    rainbow (3.0.0)
+    rake (13.0.3)
+    redis (4.2.5)
+    regexp_parser (2.1.1)
+    rexml (3.2.5)
     rss (0.2.9)
       rexml
-    ruby2_keywords (0.0.2)
+    rubocop (1.12.1)
+      parallel (~> 1.10)
+      parser (>= 3.0.0.0)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml
+      rubocop-ast (>= 1.2.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 3.0)
+    rubocop-ast (1.4.1)
+      parser (>= 2.7.1.5)
+    rubocop-performance (1.10.1)
+      rubocop (>= 0.90.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
+    ruby-progressbar (1.11.0)
+    ruby2_keywords (0.0.4)
     sinatra (2.1.0)
       mustermann (~> 1.0)
       rack (~> 2.2)
@@ -33,7 +61,11 @@ GEM
       rack-protection (= 2.1.0)
       sinatra (= 2.1.0)
       tilt (~> 2.0)
+    standard (1.0.5)
+      rubocop (= 1.12.1)
+      rubocop-performance (= 1.10.1)
     tilt (2.0.10)
+    unicode-display_width (2.0.0)
 
 PLATFORMS
   ruby
@@ -48,9 +80,10 @@ DEPENDENCIES
   rss
   sinatra
   sinatra-contrib
+  standard
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 3.0.1p64
 
 BUNDLED WITH
-   2.1.4
+   2.2.15
