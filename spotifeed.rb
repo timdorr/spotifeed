@@ -67,6 +67,7 @@ class Spotifeed < Sinatra::Base
       rss.channel.author = show["publisher"]
       rss.channel.itunes_author = show["publisher"]
       rss.channel.language = show["languages"].first
+      rss.channel.itunes_block = true
 
       rss.image.url = show.dig("images", 0, "url")
       rss.image.title = show["name"]
