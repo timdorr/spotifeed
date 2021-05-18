@@ -128,34 +128,11 @@
         those downloadable, which is not feasible or legal.
       </p>
 
-      <!-- <h1>
-        Spotifeed is a simple service to convert Spotify podcasts to RSS feeds.
-      </h1>
-
-      <p>
-        You can use these RSS feeds in any podcast app. Just take the show ID
-        from the end of the Show Link on Spotify and put it at the end of
-        <span>https://spotifeed.timdorr.com/</span>
-      </p>
-
       <p>
         <a href="https://github.com/timdorr/spotifeed"
           >The source code to this site is available on GitHub</a
         >
       </p>
-
-      <label for="spotify_url">Spotify URL</label>
-      <input
-        id="spotify_url"
-        value="https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk"
-      />
-
-      <label>RSS Feed</label>
-      <a
-        href="https://spotifeed.timdorr.com/4rOoJ6Egrf8K2IrywzwOMk"
-        id="spotifeed_url"
-        >https://spotifeed.timdorr.com/4rOoJ6Egrf8K2IrywzwOMk</a
-      > -->
 
       <footer>
         Spotify® is a trademark of Spotify AB which does not sponsor, authorize,
@@ -163,24 +140,4 @@
       </footer>
     </main>
   </body>
-
-  <!-- <script>
-    const spotifyURL = document.getElementById('spotify_url')
-    const spotifeedURL = document.getElementById('spotifeed_url')
-
-    const urlChanged = (event) => {
-      let showID = event.target.value.match(
-        /https\:\/\/open\.spotify\.com\/show\/(\w*)/i
-      )
-      if (!showID) return
-
-      showID = showID.pop()
-
-      spotifeedURL.href = `https://spotifeed.timdorr.com/${showID}`
-      spotifeedURL.textContent = `https://spotifeed.timdorr.com/${showID}`
-    }
-
-    spotifyURL.addEventListener('change', urlChanged)
-    spotifyURL.addEventListener('keyup', urlChanged)
-  </script> -->
 </html>
