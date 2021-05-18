@@ -92,9 +92,9 @@ class Spotifeed < Sinatra::Base
           item.itunes_explicit = episode["explicit"]
 
           item.link = episode.dig("external_urls", "spotify")
-          item.enclosure.url = "https://anon-podcast.scdn.co/#{episode["audio_preview_url"].split("/").last}"
-          item.enclosure.length = 0
-          item.enclosure.type = "audio/mpeg"
+          # item.enclosure.url = "https://anon-podcast.scdn.co/#{episode["audio_preview_url"].split("/").last}"
+          # item.enclosure.length = 0
+          # item.enclosure.type = "audio/mpeg"
         end
       end
     end.to_s
