@@ -108,24 +108,24 @@
       <h1>Spotifeed has been discontinued.</h1>
       <p>
         Unfortunately, Spotify has made critical changes to their podcast
-        download infrastructure that prevent Spotifeed from working. While
-        Spotifeed can still access the show and episode data, the downloads
-        themselves are no longer accessible.
+        download infrastructure that prevents Spotifeed from working. While
+        Spotifeed can still access the show and episode data, the audio file
+        downloads are no longer accessible.
         <a href="https://www.youtube.com/watch?v=3at_Ev2kOoI"
           >He's dead, Jim.</a
         >
       </p>
       <p>
-        The technical details: Spofiy's anon-podcast.scdn.co server has been
+        The technical details: Spotify's anon-podcast.scdn.co server has been
         discontinued. This served as an unauthenticated proxy server for podcast
         episode audio. They have switched to streaming directly from the
         podcast's source server. For non-exclusive podcasts, that is simply
         whatever is in the RSS feed (in which case, you can access those
         podcasts directly without Spotifeed's help). For exclusive podcasts,
-        Spotify is using their audio4-fa.scdn.co server, which appears to be
-        using an HLS stream that is not usable by general HTTP clients. That
-        means Spotifeed would have to re-host the podcast audio files to make
-        those downloadable, which is not feasible or legal.
+        Spotify is using their audio-fa.scdn.co server, which appears to be
+        using a chunked MP4 stream that is not usable by general podcast
+        clients. That means Spotifeed would have to re-host the podcast audio
+        files to make those downloadable, which is not feasible or legal.
       </p>
 
       <p>
